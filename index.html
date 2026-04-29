@@ -414,10 +414,19 @@
         .web-lines line {
             stroke: var(--squad-avatar-text); stroke-width: 1.2; opacity: 0.38;
             filter: drop-shadow(0 0 8px var(--accent-glow));
+            stroke-dasharray: 10 18;
+            animation: webStringFlow 2.8s linear infinite;
         }
+        .web-lines line:nth-of-type(even) { animation-direction: reverse; animation-duration: 3.6s; }
         .web-lines circle {
             fill: none; stroke: var(--squad-line); stroke-width: 1; opacity: 0.3;
+            stroke-dasharray: 12 16;
+            animation: webStringFlow 8s linear infinite reverse;
         }
+        .quote-web.is-cursor .web-lines line { animation-duration: 9s; opacity: 0.62; }
+        .quote-web.is-cursor .web-lines line:nth-of-type(even) { animation-duration: 11s; }
+        .quote-web.is-cursor .web-lines circle { animation-duration: 18s; opacity: 0.48; }
+        @keyframes webStringFlow { to { stroke-dashoffset: -56; } }
         .quote-core {
             position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
             width: min(560px, 62vw); padding: clamp(1.5rem, 3vw, 2.5rem); border-radius: 18px;
@@ -1238,6 +1247,9 @@
 
         function initQuoteWebMouse() {
             if (!quoteWeb) return;
+            quoteWeb.addEventListener('mouseenter', () => {
+                quoteWeb.classList.add('is-cursor');
+            });
             quoteWeb.addEventListener('mousemove', (event) => {
                 const rect = quoteWeb.getBoundingClientRect();
                 quoteWeb.style.setProperty('--cursor-x', `${event.clientX - rect.left}px`);
@@ -1252,6 +1264,7 @@
                 });
             });
             quoteWeb.addEventListener('mouseleave', () => {
+                quoteWeb.classList.remove('is-cursor');
                 quoteWeb.querySelectorAll('.web-node').forEach(node => node.style.setProperty('--node-scale', '1'));
             });
         }
