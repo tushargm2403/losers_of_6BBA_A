@@ -270,12 +270,18 @@
         }
         .data-ring { position: absolute; left: 72px; right: 72px; top: 72px; bottom: 148px; border: 1px dashed rgba(255,255,255,0.18); border-radius: 50%; animation: spinPulse 15s linear infinite reverse; }
         .data-node {
-            position: absolute; width: 76px; min-height: 76px; padding: 0.8rem; display: grid; place-items: center;
+            position: absolute; width: 76px; min-height: 76px; padding: 0.8rem; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; gap: 0.32rem;
             border-radius: 12px; background: rgba(3, 10, 18, 0.78); border: 1px solid rgba(24,245,201,0.28);
-            color: #fff; font-family: 'Outfit'; text-align: center; box-shadow: 0 0 28px rgba(24,245,201,0.14);
+            color: #fff; font-family: 'Outfit'; text-align: center; line-height: 1; box-shadow: 0 0 28px rgba(24,245,201,0.14);
             animation: nodeFloat 4s ease-in-out infinite;
         }
-        .data-node small { display: block; font-family: 'Inter'; color: rgba(255,255,255,0.62); font-size: 0.62rem; letter-spacing: 1px; text-transform: uppercase; }
+        .data-node small {
+            display: flex; align-items: center; justify-content: center;
+            width: 100%; transform: translateX(0.5px);
+            font-family: 'Inter'; color: rgba(255,255,255,0.62); font-size: 0.62rem; line-height: 1.15;
+            letter-spacing: 0; text-transform: uppercase; text-align: center;
+        }
         .data-node:nth-child(2) { left: 8%; top: 14%; }
         .data-node:nth-child(3) { right: 10%; top: 20%; animation-delay: -1s; }
         .data-node:nth-child(4) { left: 10%; top: 58%; animation-delay: -2s; }
