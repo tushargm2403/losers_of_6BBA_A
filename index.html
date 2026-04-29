@@ -202,7 +202,7 @@
            PAGE 1: HOME (ANALYTICS HERO)
            ━━━━━━━━━━━━━━━━━━━ */
         #home { padding-top: 0; }
-        .hero { position: relative; min-height: 96vh; display: flex; align-items: center; justify-content: center; overflow: hidden; background: #020204; perspective: 1000px; }
+        .hero { position: relative; min-height: 100svh; display: flex; align-items: center; justify-content: center; overflow: hidden; background: #020204; perspective: 1000px; padding: 95px 0 48px; }
         #starfield { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
         
         .flashlight {
@@ -213,7 +213,7 @@
         .hero-content {
             position: relative; z-index: 3; width: min(1120px, calc(100% - 40px)); color: #fff;
             transform-style: preserve-3d; transition: transform 0.1s; pointer-events: none;
-            display: grid; grid-template-columns: 1.08fr 0.92fr; align-items: center; gap: 3rem;
+            display: grid; grid-template-columns: 1.08fr 0.92fr; align-items: center; gap: 2.4rem;
         }
 
         .hero-copy { text-align: left; }
@@ -225,7 +225,7 @@
         }
 
         .hero-title {
-            font-size: clamp(3.8rem, 10vw, 8.5rem); line-height: 0.9; margin: 1rem 0 0;
+            font-size: clamp(3rem, 7.4vw, 6.5rem); line-height: 0.92; margin: 1rem 0 0;
             background: linear-gradient(115deg, #fff, var(--accent), var(--success), #fff);
             background-size: 200% auto;
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
@@ -252,13 +252,13 @@
         .hero-stat span { display: block; margin-top: 0.4rem; color: rgba(255,255,255,0.74); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; }
 
         .analytics-orb {
-            min-height: 540px; border: 1px solid rgba(255,255,255,0.12); border-radius: 16px;
+            min-height: 440px; border: 1px solid rgba(255,255,255,0.12); border-radius: 16px;
             background: linear-gradient(145deg, rgba(255,255,255,0.12), rgba(255,255,255,0.03));
             backdrop-filter: blur(16px); position: relative; overflow: hidden;
             box-shadow: 0 30px 90px rgba(0,0,0,0.35), inset 0 0 50px rgba(24,245,201,0.08);
         }
         .analytics-orb::before {
-            content: ''; position: absolute; left: 30px; right: 30px; top: 30px; bottom: 128px; border-radius: 50%;
+            content: ''; position: absolute; left: 30px; right: 30px; top: 30px; bottom: 108px; border-radius: 50%;
             border: 1px solid rgba(24,245,201,0.34); box-shadow: 0 0 50px rgba(24,245,201,0.22);
             animation: spinPulse 9s linear infinite;
         }
@@ -268,7 +268,7 @@
             background: radial-gradient(circle, rgba(24,245,201,0.8), rgba(0,119,255,0.26) 42%, transparent 68%);
             filter: blur(4px); animation: breathe 3.5s ease-in-out infinite;
         }
-        .data-ring { position: absolute; left: 72px; right: 72px; top: 82px; bottom: 168px; border: 1px dashed rgba(255,255,255,0.18); border-radius: 50%; animation: spinPulse 15s linear infinite reverse; }
+        .data-ring { position: absolute; left: 72px; right: 72px; top: 72px; bottom: 148px; border: 1px dashed rgba(255,255,255,0.18); border-radius: 50%; animation: spinPulse 15s linear infinite reverse; }
         .data-node {
             position: absolute; width: 76px; min-height: 76px; padding: 0.8rem; display: grid; place-items: center;
             border-radius: 12px; background: rgba(3, 10, 18, 0.78); border: 1px solid rgba(24,245,201,0.28);
@@ -294,7 +294,7 @@
         .cr-pill:nth-child(2) { animation-delay: -1.4s; }
         .cr-pill strong { display: block; font-size: 1rem; line-height: 1.1; white-space: nowrap; }
         .cr-pill small { display: block; margin-top: 0.35rem; color: var(--gold); font-family: 'Inter'; font-weight: 900; letter-spacing: 1.5px; }
-        .bar-wave { position: absolute; left: 50%; top: 53%; transform: translateX(-50%); display: flex; align-items: end; gap: 10px; height: 95px; }
+        .bar-wave { position: absolute; left: 50%; top: 48%; transform: translateX(-50%); display: flex; align-items: end; gap: 10px; height: 86px; }
         .bar-wave span { width: 16px; border-radius: 6px 6px 0 0; background: linear-gradient(to top, var(--accent), var(--success)); animation: barDance 1.2s ease-in-out infinite; }
         .bar-wave span:nth-child(1) { height: 38px; }
         .bar-wave span:nth-child(2) { height: 78px; animation-delay: -0.2s; }
@@ -383,93 +383,89 @@
         @keyframes routeMove { 50% { opacity: 0.35; } }
         @keyframes visitMove { 50% { transform: translateY(-18px); filter: brightness(1.5); } }
 
-        .quote-web-section {
-            max-width: 1120px; margin: 1rem auto 6rem; padding: 0 20px;
-        }
+        .quote-section { max-width: 1180px; margin: 1rem auto 6rem; padding: 0 20px; }
         .quote-web {
-            position: relative; min-height: 700px; display: grid; place-items: center; isolation: isolate;
-            --web-x: 50%;
-            --web-y: 50%;
+            --cursor-x: 50%;
+            --cursor-y: 50%;
+            position: relative; min-height: 760px; overflow: hidden; border-radius: 22px;
+            background:
+                radial-gradient(circle 260px at var(--cursor-x) var(--cursor-y), rgba(24,245,201,0.2), transparent 64%),
+                linear-gradient(135deg, rgba(0,119,255,0.12), transparent 42%),
+                var(--squad-card);
+            color: var(--squad-text); border: 1px solid var(--squad-line);
+            box-shadow: 0 0 0 1px var(--squad-line), 0 24px 70px rgba(0,0,0,0.16), inset 0 0 54px rgba(0,103,214,0.08);
+            backdrop-filter: blur(16px);
         }
         .quote-web::before,
         .quote-web::after {
-            content: ''; position: absolute; inset: 7% 10%; border-radius: 50%;
-            border: 1px solid var(--squad-line); opacity: 0.5; z-index: -1;
-            animation: webBreathe 5s ease-in-out infinite;
+            content: ''; position: absolute; inset: 8%; border-radius: 50%;
+            border: 1px solid rgba(24,245,201,0.22); pointer-events: none;
         }
-        .quote-web::after {
-            inset: 18% 22%; border-style: dashed; opacity: 0.38;
-            animation-duration: 7s;
+        .quote-web::after { inset: 21%; border-style: dashed; opacity: 0.55; }
+        .web-lines {
+            position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;
         }
-        .web-line {
-            position: absolute; left: 50%; top: 50%; width: min(47vw, 470px); height: 1px;
-            background: linear-gradient(90deg, transparent, var(--squad-line), transparent);
-            transform-origin: left center; opacity: 0.45; z-index: -1;
-            animation: webSignal 2.8s ease-in-out infinite;
+        .web-lines line {
+            stroke: var(--squad-avatar-text); stroke-width: 1.2; opacity: 0.38;
+            filter: drop-shadow(0 0 8px var(--accent-glow));
         }
-        .web-line:nth-child(1) { transform: rotate(0deg); }
-        .web-line:nth-child(2) { transform: rotate(45deg); }
-        .web-line:nth-child(3) { transform: rotate(90deg); }
-        .web-line:nth-child(4) { transform: rotate(135deg); }
-        .web-line:nth-child(5) { transform: rotate(180deg); }
-        .web-line:nth-child(6) { transform: rotate(225deg); }
-        .web-line:nth-child(7) { transform: rotate(270deg); }
-        .web-line:nth-child(8) { transform: rotate(315deg); }
-        .quote-box {
-            width: min(620px, 78vw); padding: clamp(1.6rem, 4vw, 3rem); border-radius: 18px;
-            background: var(--squad-card); color: var(--squad-text); border: 1px solid var(--squad-line);
-            box-shadow: 0 0 0 1px var(--squad-line), 0 24px 70px rgba(0,0,0,0.16), inset 0 0 34px rgba(0,103,214,0.06);
-            text-align: center; backdrop-filter: blur(16px);
-            position: relative; overflow: hidden;
+        .web-lines circle {
+            fill: none; stroke: var(--squad-line); stroke-width: 1; opacity: 0.3;
         }
-        .quote-box::before {
-            content: ''; position: absolute; inset: 0; pointer-events: none;
-            background: radial-gradient(circle 190px at var(--web-x) var(--web-y), rgba(24,245,201,0.18), transparent 68%);
-            opacity: 0.9;
+        .quote-core {
+            position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+            width: min(560px, 62vw); padding: clamp(1.5rem, 3vw, 2.5rem); border-radius: 18px;
+            background: rgba(3, 10, 18, 0.72); color: #fff; border: 1px solid var(--squad-line);
+            box-shadow: 0 0 36px rgba(24,245,201,0.18), inset 0 0 34px rgba(0,103,214,0.12);
+            text-align: center; z-index: 3;
         }
-        .quote-box > * { position: relative; z-index: 1; }
-        .quote-box h2 { color: var(--squad-avatar-text); margin-bottom: 1.2rem; font-size: clamp(1.8rem, 5vw, 3rem); }
-        .quote-box p { font-size: clamp(1rem, 2vw, 1.25rem); margin: 0.9rem 0; color: var(--squad-muted); line-height: 1.75; }
-        .web-photo {
-            position: absolute; width: clamp(86px, 11vw, 132px); aspect-ratio: 1; border-radius: 50%;
-            display: grid; place-items: center; overflow: visible; background: var(--squad-avatar-bg);
-            color: var(--squad-avatar-text); border: 2px solid var(--squad-avatar-text);
-            box-shadow: 0 0 24px rgba(0,103,214,0.22), 0 14px 34px rgba(0,0,0,0.14);
-            font-family: 'Outfit'; font-size: 1.4rem;
-            appearance: none;
-            padding: 0;
-            --tx: 0;
-            --ty: 0;
-            --node-scale: 1;
-            transform: translate(var(--tx), var(--ty)) scale(var(--node-scale));
-            transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
-            cursor: zoom-in;
-        }
-        .web-photo img, .web-photo .web-tag { position: relative; z-index: 1; }
+        .quote-core h2 { color: var(--squad-avatar-text); margin-bottom: 1rem; font-size: clamp(1.8rem, 5vw, 3rem); }
+        .quote-core p { font-size: clamp(0.95rem, 1.7vw, 1.16rem); margin: 0.75rem 0; color: rgba(235,245,255,0.76); line-height: 1.65; }
         #quoteWebPhotos { display: contents; }
-        .web-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
-        .web-photo .web-tag {
-            position: absolute; left: 50%; bottom: -0.4rem; transform: translateX(-50%);
-            width: max-content; max-width: 160px; padding: 0.34rem 0.62rem; border-radius: 999px;
-            background: rgba(3, 10, 18, 0.86); color: #fff; border: 1px solid var(--squad-line);
-            font: 800 0.68rem/1.1 'Inter', sans-serif; letter-spacing: 0.3px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.22);
+        .web-node {
+            position: absolute; width: clamp(96px, 11vw, 142px); aspect-ratio: 1; border-radius: 50%;
+            overflow: visible; border: 2px solid var(--squad-avatar-text); background: var(--squad-avatar-bg);
+            box-shadow: 0 0 28px rgba(24,245,201,0.22), 0 16px 36px rgba(0,0,0,0.18);
+            appearance: none; padding: 0; cursor: zoom-in; z-index: 4;
+            --node-scale: 1;
+            transform: translate(var(--tx, 0), var(--ty, 0)) scale(var(--node-scale));
+            transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
         }
-        .web-photo:hover {
-            --node-scale: 1.16;
-            border-color: var(--cr-line);
-            box-shadow: 0 0 34px var(--cr-glow), 0 18px 42px rgba(0,0,0,0.2);
+        .web-node:hover { --node-scale: 1.2; border-color: var(--cr-line); box-shadow: 0 0 34px var(--cr-glow), 0 18px 42px rgba(0,0,0,0.22); }
+        .web-node img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; }
+        .web-node.empty {
+            border-style: dashed;
+            opacity: 0.72;
+            cursor: default;
         }
-        .web-photo.pos-1 { left: 7%; top: 12%; }
-        .web-photo.pos-2 { left: 50%; top: 0; --tx: -50%; }
-        .web-photo.pos-3 { right: 7%; top: 12%; }
-        .web-photo.pos-4 { right: 0; top: 50%; --ty: -50%; }
-        .web-photo.pos-5 { right: 9%; bottom: 10%; }
-        .web-photo.pos-6 { left: 50%; bottom: 0; --tx: -50%; }
-        .web-photo.pos-7 { left: 9%; bottom: 10%; }
-        .web-photo.pos-8 { left: 0; top: 50%; --ty: -50%; }
-        @keyframes webBreathe { 50% { transform: scale(1.035); opacity: 0.72; } }
-        @keyframes webSignal { 50% { opacity: 0.85; filter: brightness(1.35); } }
+        .web-node.empty::before {
+            content: 'Add Photo';
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            color: var(--squad-avatar-text);
+            font: 900 0.72rem/1.1 'Inter', sans-serif;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(24,245,201,0.12), transparent 68%);
+        }
+        .web-node .web-tag {
+            position: absolute; left: 50%; bottom: -0.55rem; transform: translateX(-50%);
+            width: max-content; max-width: 170px; padding: 0.38rem 0.66rem; border-radius: 999px;
+            background: rgba(3, 10, 18, 0.9); color: #fff; border: 1px solid var(--squad-line);
+            font: 900 0.68rem/1.1 'Inter', sans-serif; letter-spacing: 0.3px; text-align: center;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.24);
+        }
+        .web-node.pos-1 { left: 8%; top: 13%; }
+        .web-node.pos-2 { left: 50%; top: 4%; --tx: -50%; }
+        .web-node.pos-3 { right: 8%; top: 13%; }
+        .web-node.pos-4 { right: 4%; top: 50%; --ty: -50%; }
+        .web-node.pos-5 { right: 11%; bottom: 12%; }
+        .web-node.pos-6 { left: 50%; bottom: 4%; --tx: -50%; }
+        .web-node.pos-7 { left: 11%; bottom: 12%; }
+        .web-node.pos-8 { left: 4%; top: 50%; --ty: -50%; }
 
         /* ━━━━━━━━━━━━━━━━━━━
            SHARED: CARDS & 3D EFFECTS
@@ -738,35 +734,38 @@
             .nav-links.open { left: 0; }
             .nav-links a { font-size: 2rem; }
             .hamburger { font-size: 0.85rem; font-weight: 800; }
-            .hero-title { font-size: 3rem; }
-            .hero { min-height: auto; padding: 110px 0 50px; }
-            .hero-content { grid-template-columns: 1fr; gap: 2rem; }
+            .hero-title { font-size: 2.65rem; }
+            .hero-subtitle { font-size: 1rem; letter-spacing: 1.5px; margin: 0.7rem 0 0; }
+            .hero-kicker { font-size: 0.68rem; justify-content: center; max-width: 100%; }
+            .hero { min-height: 100svh; padding: 88px 0 34px; align-items: flex-start; }
+            .hero-content { grid-template-columns: 1fr; gap: 1rem; width: min(100% - 28px, 520px); }
             .hero-copy { text-align: center; }
             .hero-lede { margin: 0 auto; }
-            .hero-stats { grid-template-columns: 1fr; }
-            .analytics-orb { min-height: 520px; }
+            .hero-lede, .hero-stats { display: none; }
+            .analytics-orb { min-height: 255px; order: -1; }
             .analytics-orb::before { left: 22px; right: 22px; top: 34px; bottom: 150px; }
             .data-ring { left: 52px; right: 52px; top: 94px; bottom: 190px; }
-            .data-node { width: 68px; min-height: 68px; font-size: 0.85rem; }
+            .data-node { width: 58px; min-height: 58px; font-size: 0.78rem; padding: 0.45rem; }
+            .data-node small { font-size: 0.5rem; }
             .data-node:nth-child(2) { left: 7%; top: 12%; }
-            .data-node:nth-child(3) { right: 7%; top: 18%; }
-            .data-node:nth-child(4) { left: 8%; top: 56%; }
-            .data-node:nth-child(5) { right: 8%; top: 52%; }
-            .bar-wave { top: 52%; height: 82px; gap: 8px; }
-            .bar-wave span { width: 13px; }
-            .cr-strip { grid-template-columns: 1fr; bottom: 18px; gap: 0.55rem; }
-            .cr-pill { min-height: 48px; padding: 0.6rem 0.8rem; }
+            .data-node:nth-child(3) { right: 7%; top: 16%; }
+            .data-node:nth-child(4) { left: 9%; top: 57%; }
+            .data-node:nth-child(5) { right: 9%; top: 55%; }
+            .bar-wave { top: 45%; height: 62px; gap: 7px; }
+            .bar-wave span { width: 11px; }
+            .bar-wave span:nth-child(4) { height: 68px; }
+            .cr-strip { display: none; }
             .quote-web { min-height: 760px; }
-            .quote-box { width: min(92vw, 520px); }
-            .web-line { width: 42vw; }
-            .web-photo.pos-1 { left: 3%; top: 9%; }
-            .web-photo.pos-2 { top: 1%; }
-            .web-photo.pos-3 { right: 3%; top: 9%; }
-            .web-photo.pos-4 { right: 1%; top: 38%; }
-            .web-photo.pos-5 { right: 5%; bottom: 12%; }
-            .web-photo.pos-6 { bottom: 2%; }
-            .web-photo.pos-7 { left: 5%; bottom: 12%; }
-            .web-photo.pos-8 { left: 1%; top: 38%; }
+            .quote-core { width: min(78vw, 430px); padding: 1.2rem; }
+            .web-node { width: 86px; }
+            .web-node.pos-1 { left: 4%; top: 10%; }
+            .web-node.pos-2 { top: 2%; }
+            .web-node.pos-3 { right: 4%; top: 10%; }
+            .web-node.pos-4 { right: 2%; top: 43%; }
+            .web-node.pos-5 { right: 6%; bottom: 11%; }
+            .web-node.pos-6 { bottom: 2%; }
+            .web-node.pos-7 { left: 6%; bottom: 11%; }
+            .web-node.pos-8 { left: 2%; top: 43%; }
             .timeline::before { left: 30px; }
             .timeline-item, .timeline-item:nth-child(even) { justify-content: flex-start; padding-left: 80px !important; padding-right: 0; }
             .timeline-item:nth-child(odd) .timeline-content, .timeline-item:nth-child(even) .timeline-content { margin: 0; text-align: left; flex-direction: column; align-items: flex-start; width: 100%; }
@@ -841,11 +840,10 @@
                 <a onclick="navigateTo('visits')" class="link-card stagger-item"><span class="motion-gif gif-visits"><span></span><span></span><span></span><span></span></span><h3>Safar</h3></a>
             </div>
 
-            <div class="quote-web-section scroll-anim">
-                <div class="quote-web">
-                    <span class="web-line"></span><span class="web-line"></span><span class="web-line"></span><span class="web-line"></span>
-                    <span class="web-line"></span><span class="web-line"></span><span class="web-line"></span><span class="web-line"></span>
-                    <div class="quote-box">
+            <div class="quote-section scroll-anim">
+                <div class="quote-web" id="quoteWeb">
+                    <svg class="web-lines" id="quoteWebLines" viewBox="0 0 1000 700" preserveAspectRatio="none" aria-hidden="true"></svg>
+                    <div class="quote-core" id="quoteCore">
                         <h2>Loosers Code</h2>
                         <p>We’re the “losers” who didn’t come to win the crowd, but to stand apart.</p>
                         <p>We’re called losers because we never tried to lose ourselves.</p>
@@ -1155,7 +1153,10 @@
             '23111308': 'SQUAD/23111308.jpg',
             '23111311': 'SQUAD/23111311-anushka-paul.jpg'
         };
+        const quoteWeb = document.getElementById('quoteWeb');
+        const quoteCore = document.getElementById('quoteCore');
         const quoteWebPhotos = document.getElementById('quoteWebPhotos');
+        const quoteWebLines = document.getElementById('quoteWebLines');
 
         function initialsFromName(name) {
             return name.split(' ').filter(Boolean).slice(0, 2).map(part => part[0]).join('');
@@ -1171,53 +1172,85 @@
                 .map(([roll, name]) => ({ roll, name, src: squadPhotos[roll] }));
         }
 
+        const webPositions = {
+            1: { x: 120, y: 105 },
+            2: { x: 500, y: 70 },
+            3: { x: 880, y: 105 },
+            4: { x: 915, y: 350 },
+            5: { x: 820, y: 595 },
+            6: { x: 500, y: 635 },
+            7: { x: 180, y: 595 },
+            8: { x: 85, y: 350 }
+        };
+        const webPositionSets = {
+            1: [2],
+            2: [1, 3],
+            3: [1, 2, 3],
+            4: [1, 3, 5, 7],
+            5: [1, 2, 3, 5, 7],
+            6: [1, 2, 3, 5, 6, 7],
+            7: [1, 2, 3, 4, 5, 6, 7],
+            8: [1, 2, 3, 4, 5, 6, 7, 8]
+        };
+
+        function drawQuoteWebLines(items) {
+            if (!quoteWebLines) return;
+            const center = { x: 500, y: 350 };
+            const lines = [];
+            lines.push(`<circle cx="${center.x}" cy="${center.y}" r="250"></circle>`);
+            lines.push(`<circle cx="${center.x}" cy="${center.y}" r="330"></circle>`);
+            items.forEach(item => {
+                const point = webPositions[item.position];
+                lines.push(`<line x1="${center.x}" y1="${center.y}" x2="${point.x}" y2="${point.y}"></line>`);
+            });
+            for (let i = 0; i < items.length; i++) {
+                const current = webPositions[items[i].position];
+                const next = webPositions[items[(i + 1) % items.length].position];
+                lines.push(`<line x1="${current.x}" y1="${current.y}" x2="${next.x}" y2="${next.y}"></line>`);
+            }
+            quoteWebLines.innerHTML = lines.join('');
+        }
+
         function renderQuoteWeb() {
             const photoMembers = getPhotoMembers();
-            if (!photoMembers.length || !quoteWebPhotos) return;
-            const positionSets = {
-                1: [2],
-                2: [1, 3],
-                3: [1, 2, 3],
-                4: [1, 3, 5, 7],
-                5: [1, 2, 3, 5, 7],
-                6: [1, 2, 3, 5, 6, 7],
-                7: [1, 2, 3, 4, 5, 6, 7],
-                8: [1, 2, 3, 4, 5, 6, 7, 8]
-            };
+            if (!quoteWebPhotos) return;
             const shuffledMembers = [...photoMembers].sort(() => Math.random() - 0.5);
-            const webCount = Math.min(8, shuffledMembers.length);
-            const positions = positionSets[webCount];
-            const webItems = shuffledMembers.slice(0, webCount).map((member, index) => ({ ...member, position: positions[index] }));
-            quoteWebPhotos.innerHTML = webItems.map(item => `
-                <button class="web-photo pos-${item.position}" type="button" data-modal-title="${item.name}" data-modal-subtitle="Roll No. ${item.roll} | Loosers web">
+            const webItems = Array.from({ length: 8 }, (_, index) => {
+                const member = shuffledMembers[index];
+                return member ? { ...member, position: index + 1 } : { empty: true, position: index + 1 };
+            });
+            quoteWebPhotos.innerHTML = webItems.map(item => item.empty ? `
+                <div class="web-node empty pos-${item.position}" aria-label="Empty Squad photo slot"></div>
+            ` : `
+                <button class="web-node pos-${item.position}" type="button" data-modal-title="${item.name}" data-modal-subtitle="Roll No. ${item.roll} | Loosers web">
                     <img src="${item.src}" alt="${item.name}" loading="lazy" decoding="async">
                     <span class="web-tag">${item.name.split(' ').slice(0, 2).join(' ')} | ${item.roll.slice(-2)}</span>
                 </button>
             `).join('');
+            drawQuoteWebLines(webItems);
         }
 
-        setInterval(renderQuoteWeb, 5000);
-
         function initQuoteWebMouse() {
-            const quoteWeb = document.querySelector('.quote-web');
             if (!quoteWeb) return;
             quoteWeb.addEventListener('mousemove', (event) => {
                 const rect = quoteWeb.getBoundingClientRect();
-                quoteWeb.style.setProperty('--web-x', `${event.clientX - rect.left}px`);
-                quoteWeb.style.setProperty('--web-y', `${event.clientY - rect.top}px`);
-                quoteWeb.querySelectorAll('.web-photo').forEach(node => {
+                quoteWeb.style.setProperty('--cursor-x', `${event.clientX - rect.left}px`);
+                quoteWeb.style.setProperty('--cursor-y', `${event.clientY - rect.top}px`);
+                quoteWeb.querySelectorAll('.web-node').forEach(node => {
                     const nodeRect = node.getBoundingClientRect();
                     const nodeX = nodeRect.left + nodeRect.width / 2;
                     const nodeY = nodeRect.top + nodeRect.height / 2;
                     const distance = Math.hypot(event.clientX - nodeX, event.clientY - nodeY);
-                    const scale = Math.max(1, 1.28 - distance / 520);
+                    const scale = Math.max(1, 1.26 - distance / 560);
                     node.style.setProperty('--node-scale', scale.toFixed(3));
                 });
             });
             quoteWeb.addEventListener('mouseleave', () => {
-                quoteWeb.querySelectorAll('.web-photo').forEach(node => node.style.setProperty('--node-scale', '1'));
+                quoteWeb.querySelectorAll('.web-node').forEach(node => node.style.setProperty('--node-scale', '1'));
             });
         }
+
+        setInterval(renderQuoteWeb, 5000);
 
         function renderStudents() {
             studentsContainer.innerHTML = students.map(([roll, name], index) => {
